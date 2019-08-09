@@ -7,7 +7,9 @@
 
 var axios = require('axios');
 
-var tkk = '0'
+var window = {
+  TKK:'0'
+};
 
 /* eslint-disable */
 // BEGIN
@@ -72,7 +74,7 @@ function updateTKK() {
     return new Promise(function (resolve, reject) {
         var now = Math.floor(Date.now() / 3600000);
 
-        if (Number(tkk.split('.')[0]) === now) {
+        if (Number(window.TKK.split('.')[0]) === now) {
             resolve();
         } else {
             return axios.request({
@@ -86,8 +88,7 @@ function updateTKK() {
                     eval(code[0]);
                     /* eslint-disable no-undef */
                     if (typeof TKK !== 'undefined') {
-                        tkk = TKK;
-                        tkk = TKK
+                        window.TKK = TKK;
                     }
                     /* eslint-enable no-undef */
                 }
