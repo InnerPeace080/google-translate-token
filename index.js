@@ -6,7 +6,8 @@
  */
 
 var axios = require('axios');
-var Configstore = require('configstore');
+
+var tkk = 0
 
 /* eslint-disable */
 // BEGIN
@@ -67,17 +68,11 @@ var wr = function(a) {
 // END
 /* eslint-enable */
 
-var config = new Configstore('google-translate-api');
-
-var window = {
-    TKK: config.get('TKK') || '0'
-};
-
 function updateTKK() {
     return new Promise(function (resolve, reject) {
         var now = Math.floor(Date.now() / 3600000);
 
-        if (Number(window.TKK.split('.')[0]) === now) {
+        if (Number(tkk.split('.')[0]) === now) {
             resolve();
         } else {
             return axios.request({
@@ -91,8 +86,8 @@ function updateTKK() {
                     eval(code[0]);
                     /* eslint-disable no-undef */
                     if (typeof TKK !== 'undefined') {
-                        window.TKK = TKK;
-                        config.set('TKK', TKK);
+                        tkk = TKK;
+                        tkk = TKK
                     }
                     /* eslint-enable no-undef */
                 }
