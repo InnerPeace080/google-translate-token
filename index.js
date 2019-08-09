@@ -7,7 +7,7 @@
 
 var axios = require('axios');
 
-var tkk = 0
+var tkk = '0'
 
 /* eslint-disable */
 // BEGIN
